@@ -1,0 +1,28 @@
+{
+  "template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin",
+  "commit": "d306850507a46af96b5ab71129582655ce534c86",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Juan David Salamanca",
+      "email": "juan.salamanca@physik.hu-berlin.de",
+      "github_username": "foo",
+      "plugin_name": "dummy-nomad-plugin",
+      "module_name": "dummy_nomad_plugin",
+      "short_description": "Plugin intended for testing",
+      "version": "0.1.0",
+      "license": "MIT",
+      "include_schema_package": true,
+      "include_normalizer": true,
+      "include_parser": true,
+      "include_app": true,
+      "include_example_uploads": true,
+      "_copy_without_render": [
+        "*.html"
+      ],
+      "_template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin",
+      "_commit": "d306850507a46af96b5ab71129582655ce534c86"
+    }
+  },
+  "directory": null
+}
