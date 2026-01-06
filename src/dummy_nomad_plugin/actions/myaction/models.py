@@ -4,10 +4,10 @@ from pydantic import BaseModel, Field
 class BaseWorkflowInput(BaseModel):
     """Base input model for workflows"""
 
-    upload_id: str = Field(
-        ...,
-        description='Unique identifier for the upload associated with the workflow.',
-    )
+    # upload_id: str = Field(
+    #    ...,
+    #    description='Unique identifier for the upload associated with the workflow.',
+    # )
     user_id: str = Field(
         ..., description='Unique identifier for the user who initiated the workflow.'
     )
@@ -21,8 +21,7 @@ class ExampleWorkflowInput(BaseWorkflowInput):
     )
 
 
-class GetRequestInput(BaseModel):
+class GetRequestInput(BaseWorkflowInput):
     """Input model for the activity"""
 
-    url: str = Field(..., description='URL for get request.')
-    timeout: int = Field(..., description='Timeout for the request.')
+    iterations: int = Field(..., description='Timeout for the request.')
