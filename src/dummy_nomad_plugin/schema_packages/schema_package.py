@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 from nomad.config import config
 from nomad.datamodel.data import Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.metainfo import Quantity, SchemaPackage
+from nomad.metainfo import File, Quantity, SchemaPackage
 
 configuration = config.get_plugin_entry_point(
     'dummy_nomad_plugin.schema_packages:schema_package_entry_point'
@@ -27,6 +27,10 @@ class NewSchemaPackage(Schema):
         type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
     )
     message = Quantity(type=str)
+    test_file_0 = Quantity(
+        type=File,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.FileEditQuantity),
+    )
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
