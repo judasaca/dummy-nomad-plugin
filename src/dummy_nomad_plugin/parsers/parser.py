@@ -11,7 +11,6 @@ if TYPE_CHECKING:
     )
 
 from nomad.config import config
-from nomad.datamodel.metainfo.workflow import Workflow
 from nomad.parsing.parser import MatchingParser
 
 configuration = config.get_plugin_entry_point(
@@ -29,4 +28,4 @@ class NewParser(MatchingParser):
     ) -> None:
         logger.info('NewParser.parse', parameter=configuration.parameter)
 
-        archive.workflow2 = Workflow(name='test')
+        # archive.workflow2 = Workflow(name='test')

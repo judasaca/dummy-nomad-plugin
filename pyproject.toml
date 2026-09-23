@@ -116,6 +116,7 @@ where = ["src"]
 myaction = "dummy_nomad_plugin.actions.myaction:my_action"
 parser_entry_point = "dummy_nomad_plugin.parsers:parser_entry_point"
 schema_package_entry_point = "dummy_nomad_plugin.schema_packages:schema_package_entry_point"
+#detached_schema_package_entry_point = "dummy_nomad_plugin.schema_packages:detached_schema_package_entry_point"
 normalizer_entry_point = "dummy_nomad_plugin.normalizers:normalizer_entry_point"
 app_entry_point = "dummy_nomad_plugin.apps:app_entry_point"
 example_upload_entry_point = "dummy_nomad_plugin.example_uploads:example_upload_entry_point"
