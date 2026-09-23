@@ -44,6 +44,11 @@ class NewSchemaPackage(PlotSection, Schema):
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.FileEditQuantity),
     )
+    files = Quantity(
+        type=File,
+        shape=['*'],
+        a_eln=ELNAnnotation(component=ELNComponentEnum.FileEditQuantity),
+    )
     custom_tags = Quantity(
         type=str,
         a_eln=ELNAnnotation(
