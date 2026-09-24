@@ -28,6 +28,15 @@ m_package = SchemaPackage()
 class Sample(ArchiveSection):
     sample_id = Quantity(type=str)
 
+class Parameter(ArchiveSection):
+    label = Quantity(
+        type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
+    )
+    value = Quantity(
+        type=np.float64,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),
+    )
+
 class NewSchemaPackage(PlotSection, Schema):
     name = Quantity(
         type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
@@ -60,6 +69,7 @@ class NewSchemaPackage(PlotSection, Schema):
         a_elasticsearch=Elasticsearch(many_all=True),
     )
     samples = SubSection(section=Sample, repeats=True)
+    parameters = SubSection(section=Parameter, repeats=True)
     time = Quantity(type=np.float64, shape=['*'], unit='s')
     frequencies = Quantity(type=np.float64, shape=['n_signals'], unit='Hz')
     signals = Quantity(type=np.float64, shape=['n_signals', '*'])
