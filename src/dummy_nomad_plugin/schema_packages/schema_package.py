@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 import numpy as np
 import plotly.graph_objects as go
 from nomad.config import config
-from nomad.datamodel.data import Schema, ArchiveSection
+from nomad.datamodel.data import ArchiveSection, EntryData, Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import File, Quantity, SchemaPackage, SubSection
@@ -36,6 +36,28 @@ class Parameter(ArchiveSection):
         type=np.float64,
         a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),
     )
+
+class ChoiceSample(ArchiveSection):
+    name = Quantity(
+        type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
+    )
+
+
+class PowderSample(ChoiceSample):
+    grain_size = Quantity(
+        type=float, a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity)
+    )
+
+
+class FilmSample(ChoiceSample):
+    thickness = Quantity(
+        type=float, a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity)
+    )
+
+
+class SchemaChoiceTest(EntryData, ArchiveSection):
+    sample = SubSection(section=ChoiceSample)
+
 
 class NewSchemaPackage(PlotSection, Schema):
     name = Quantity(
