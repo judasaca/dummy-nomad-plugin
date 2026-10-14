@@ -14,9 +14,13 @@ import numpy as np
 import plotly.graph_objects as go
 from nomad.config import config
 from nomad.datamodel.data import ArchiveSection, EntryData, Schema
-from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.metainfo.annotations import (
+    ELNAnnotation,
+    ELNComponentEnum,
+    SchemaAnnotation,
+)
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
-from nomad.metainfo import File, Quantity, SchemaPackage, SubSection
+from nomad.metainfo import File, Quantity, SchemaPackage, Section, SubSection
 from nomad.metainfo.elasticsearch_extension import Elasticsearch
 
 configuration = config.get_plugin_entry_point(
@@ -60,6 +64,13 @@ class SchemaChoiceTest(EntryData, ArchiveSection):
 
 
 class NewSchemaPackage(PlotSection, Schema):
+    m_def = Section(
+        a_schema=SchemaAnnotation(
+            label='New Schema Package',
+            description='A dummy schema used to test ELN, file, plot and subsection features.',
+        )
+    )
+
     name = Quantity(
         type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
     )
