@@ -64,6 +64,11 @@ class SchemaChoiceTest(EntryData, ArchiveSection):
 
 
 class NewSchemaPackage(PlotSection, Schema):
+    """
+    Dummy entry schema that greets by name, generates fake samples and plots
+    noisy damped sine signals during normalization.
+    """
+
     m_def = Section(
         a_schema=SchemaAnnotation(
             label='New Schema Package',
